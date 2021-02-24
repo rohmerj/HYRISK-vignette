@@ -1,8 +1,6 @@
 ---
 title: "HYRISK tutorial: failure assessment of a coastal dyke"
-output: 
-  html_document:
-    keep_md: true
+output: rmarkdown::github_document
 bibliography: refs.bib
 ---
 

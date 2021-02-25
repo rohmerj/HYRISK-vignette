@@ -7,10 +7,10 @@ library(HYRISK)
 
 ## Description of the case
 
-The case study is focused on the stability analysis of a dyke described by [@Ferson06]. The dyke has revetments made of masonry blocks subject to wave action as depicted schematically in the Figure below. The stability is estimated as the difference between the dike strength minus the stress acting on it as $Z = strength - stress =\Delta.D -\frac{H.\tan(\alpha)}{\cos(\alpha).M.s^{0.5}}$ where $\Delta$ is the relative density of the revetment blocks, $D$ is their thickness, $\alpha$ is the slope of the revetment. The wave characteristics are the significant wave height $H$, and the offshore peak wave steepness *s*. The factor $M$ reflects the risk analyst$^{'}$s vision on the uncertainty related to the model itself, i.e. its ability to reproduce reality. 
+The case study is focused on the stability analysis of a dyke described by [@Ferson06]. The dyke has revetments made of masonry blocks subject to wave action as depicted schematically in the Figure below. The stability is estimated as the difference between the dike strength minus the stress acting on it as *Z = strength - stress =Delta*D -H*tan(alpha)/cos(alpha)*M*s^0.5* where *Delta* is the relative density of the revetment blocks, *D* is their thickness, *alpha* is the slope of the revetment. The wave characteristics are the significant wave height *H*, and the offshore peak wave steepness *s*. The factor *M* reflects the risk analyst's vision on the uncertainty related to the model itself, i.e. its ability to reproduce reality. 
 
-If $Z\ge0$, the dike is stable (the strength is greater than the stress); unstable otherwise. 
-The study is focused on the estimate of the probability for $Z$ to become negative, which is considered a measure of the dike reliability.
+If Z<0, the dike is stable (the strength is greater than the stress); unstable otherwise. 
+The study is focused on the estimate of the probability for *Z* to become negative, which is considered a measure of the dike reliability.
 
 ![A schematic overview of the dyke.](images/dyke.png)
 
@@ -40,13 +40,13 @@ The procedure in *HYRISK* first uses the *CREATE_INPUT* function to define the i
 Parameter          | Symbol | Uncertainty type | Representation
 -------------------|--------|------------------|-----------------
 Significant wave height| $H$ | Randomness | p-box of type Weibull with imprecise shape and scale
-Weibull scale         | $\lambda$ | Imprecision | Interval $[1.2, 1.5]$ 
-Weibull shape          | $k$ | Imprecision | Interval $[10, 12 ]$ 
-Peak wave steepness          | $s$ | Randomness | Normal (Gaussian) probability distribution with mean=0.040 and standard deviation=0.0055 
-Revetment density          | $\Delta$ | Imprecision | Interval $[1.60, 1.65]$ 
-Revetment thickness         | $H$ | Imprecision | Interval $[0.68, 0.72]$ 
-Slope angle          | $\lambda$ | Imprecision | Triangular possibility distribution of support $[0.309, 0.328]$ and core ${0.318}$
-Expert-defined factor         | $M$ | Imprecision | Trapezoidal possibility distribution of support $[3, 5.2]$ and core $[4, 5]$. 
+Weibull scale         | *lambda* | Imprecision | Interval [1.2, 1.5]
+Weibull shape          | *k* | Imprecision | Interval [10, 12 ]
+Peak wave steepness          | *s* | Randomness | Normal (Gaussian) probability distribution with mean=0.040 and standard deviation=0.0055 
+Revetment density          | *Delta* | Imprecision | Interval [1.60, 1.65] 
+Revetment thickness         | *H* | Imprecision | Interval [0.68, 0.72]
+Slope angle          | *lambda* | Imprecision | Triangular possibility distribution of support [0.309, 0.328] and core {0.318}
+Expert-defined factor         | *M* | Imprecision | Trapezoidal possibility distribution of support [3, 5.2] and core [4, 5]
 
 ```{r}
 #INPUT PARAMETERS

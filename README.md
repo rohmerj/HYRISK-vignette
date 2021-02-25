@@ -1,5 +1,5 @@
 # HYRISK-vignette
-This is the vignette of the R package [HYRISK](www). Click [here](https://rawcdn.githack.com/rohmerj/HYRISK-vignette/aaa78cc794e8cc0ff694f7d89356b7b532219d3a/hyrisk_demo.html)
+This is the vignette of the R package [HYRISK](www). Click [here](https://rawcdn.githack.com/rohmerj/HYRISK-vignette/aaa78cc794e8cc0ff694f7d89356b7b532219d3a/hyrisk_demo.html) for html version, click [here](https://github.com/rohmerj/HYRISK-vignette/blob/main/hyrisk_demo.Rmd) for R Markdown, and click [here](https://github.com/rohmerj/HYRISK-vignette/blob/main/hyrisk_introduction.pdf) for PDF version.
 
 ```{r}
 library(HYRISK)
@@ -7,7 +7,7 @@ library(HYRISK)
 
 ## Description of the case
 
-The case study is focused on the stability analysis of a dyke described by [@Ferson06]. The dyke has revetments made of masonry blocks subject to wave action as depicted schematically in the Figure below. The stability is estimated as the difference between the dike strength minus the stress acting on it as *Z = strength - stress =Delta*D -Hxtan(alpha)/cos(alpha)xMxs^0.5* where *Delta* is the relative density of the revetment blocks, *D* is their thickness, *alpha* is the slope of the revetment. The wave characteristics are the significant wave height *H*, and the offshore peak wave steepness *s*. The factor *M* reflects the risk analyst's vision on the uncertainty related to the model itself, i.e. its ability to reproduce reality. 
+The case study is focused on the stability analysis of a dyke described by [Ferson and Tucker (2006)](https://doi.org/10.1016/j.ress.2005.11.052). The dyke has revetments made of masonry blocks subject to wave action as depicted schematically in the Figure below. The stability is estimated as the difference between the dike strength minus the stress acting on it as *Z = strength - stress =DeltaxD -Hxtan(alpha)/cos(alpha)xMxs^0.5* where *Delta* is the relative density of the revetment blocks, *D* is their thickness, *alpha* is the slope of the revetment. The wave characteristics are the significant wave height *H*, and the offshore peak wave steepness *s*. The factor *M* reflects the risk analyst's vision on the uncertainty related to the model itself, i.e. its ability to reproduce reality. 
 
 If Z<0, the dike is stable (the strength is greater than the stress); unstable otherwise. 
 The study is focused on the estimate of the probability for *Z* to become negative, which is considered a measure of the dike reliability.
@@ -31,9 +31,7 @@ return(delta*D-(H*tan(alpha)/(cos(alpha)*M*sqrt(s))))
 
 The first step focuses on uncertainty representation. 
 It aims at selecting the most appropriate mathematical tool to represent uncertainty on the considered parameter. 
-The available options are: interval, possibility distribution (trapezoidal or triangular, see e.g. \cite{Baudrit06a}), probability distribution (normal, lognormal, beta, triangle, uniform, Gumbel or user-defined), 
-a probability distribution with imprecise parameters, i.e. a family of parametric probability distributions represented by a p-box [@Ferson02]. For the sake of clarity, we use the generic term imprecise probability 
-to designate such a uncertainty representation tool. 
+The available options are: interval, possibility distribution (trapezoidal or triangular, see e.g. [Baudrit et al., 2006](https://doi.org/10.1016/j.csda.2006.02.009)), probability distribution (normal, lognormal, beta, triangle, uniform, Gumbel or user-defined), a probability distribution with imprecise parameters, i.e. a family of parametric probability distributions represented by a p-box; see e.g. [(Ferson et al. 2002)](https://www.osti.gov/servlets/purl/1427258). For the sake of clarity, we use the generic term imprecise probability to designate such a uncertainty representation tool. 
 The procedure in *HYRISK* first uses the *CREATE_INPUT* function to define the input variables (imprecise, random or fixed); for instance by setting the values of the bounds of the interval, the mean and the standard deviation of a normal probability distribution, etc. Second, the *CREATE_DISTR* function assigns the corresponding distribution (probability or possibility) to each uncertain input. 
 
 
@@ -95,7 +93,7 @@ PLOT_INPUT(input)
 
 ## Step 2: uncertainty propagation
 
-The second step aims at conducting uncertainty propagation, i.e. evaluating the impact of the uncertainty pervading the input on the outcome of the risk assessment model. To do so, the main function is *PROPAG*, which implements the Monte-Carlo-based algorithm of [@Baudrit07], named *IRS* (Independent Random Sampling), for jointly handling possibility and probability distributions and the algorithm of [@Baudrit08] for jointly handling possibility, probability distributions and p-boxes. 
+The second step aims at conducting uncertainty propagation, i.e. evaluating the impact of the uncertainty pervading the input on the outcome of the risk assessment model. To do so, the main function is *PROPAG*, which implements the Monte-Carlo-based algorithm of [Baudrit et al. 2007](https://doi.org/10.1016/j.ijar.2006.07.001), named *IRS* (Independent Random Sampling), for jointly handling possibility and probability distributions and the algorithm of [Baudrit et al. 2008](https://doi.org/10.1016/j.fss.2008.02.013) for jointly handling possibility, probability distributions and p-boxes. 
 
 ### IRS
 ```{r}
@@ -109,10 +107,10 @@ Z0_IRS<-PROPAG(N=1000,input,FUN,choice_opt,param_opt,mode="IRS")
 
 ### Post-processing of the Results
 
-The output of the propagation procedure can be summarized in the form of a pair of upper and lower cumulative probability distributions (CDFs), in the form of a p-box which is closely related to upper and lower probabilities of Dempster [@Dempster67], and belief functions of Shafer [@Shafer76] as proposed by [@Baudrit07]. The following code provides the output of the propagation phase using the *PLOT_CDF* function.
+The output of the propagation procedure can be summarized in the form of a pair of upper and lower cumulative probability distributions (CDFs), in the form of a p-box as proposed by [Baudrit et al. 2007](https://doi.org/10.1016/j.ijar.2006.07.001). The following code provides the output of the propagation phase using the *PLOT_CDF* function.
 In some situations, the analysts may be more comfortable in deriving a unique probability distribution. 
 In order to support decision-making with a less extreme indicator than using either probability bounds, 
-[@Dubois11] proposed to weight the bounds by an index *w*, which reflects the attitude of the decision-maker to risk (i.e. the degree of risk aversion). This can be done using the *SUMMARY_1CDF* function as follows using two aversion weight values of respectively 30 and 50%.
+[Dubois and Guyonnet (2011)](https://doi.org/10.1080/03081079.2010.506179) proposed to weight the bounds by an index *w*, which reflects the attitude of the decision-maker to risk (i.e. the degree of risk aversion). This can be done using the *SUMMARY_1CDF* function as follows using two aversion weight values of respectively 30 and 50%.
 
 ```{r}
 #Visualisation
@@ -159,7 +157,7 @@ print(paste("Probability sup: ",round(prob$Pupp,2)))
 
 ## Step 4: sensitivity analysis
 
-The last step focuses on sensitivity analysis. The approach, based on the pinching method of [@Ferson06], is implemented using the *PINCHING_fun* and *SENSI_PINCHING* functions. In the following, we analyse the sensitivity to the 8th input parameter.
+The last step focuses on sensitivity analysis. The approach, based on the pinching method of [Ferson and Tucker (2006)](https://doi.org/10.1016/j.ress.2005.11.052), is implemented using the *PINCHING_fun* and *SENSI_PINCHING* functions. In the following, we analyse the sensitivity to the 8th input parameter.
 
 ```{r}
 #################################################

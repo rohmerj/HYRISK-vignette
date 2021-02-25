@@ -9,7 +9,7 @@ library(HYRISK)
 
 The case study is focused on the stability analysis of a dyke described by [Ferson and Tucker (2006)](https://doi.org/10.1016/j.ress.2005.11.052). The dyke has revetments made of masonry blocks subject to wave action as depicted schematically in the Figure below. The stability is estimated as the difference between the dike strength minus the stress acting on it as *Z = strength - stress =DeltaxD -Hxtan(alpha)/cos(alpha)xMxs^0.5* where *Delta* is the relative density of the revetment blocks, *D* is their thickness, *alpha* is the slope of the revetment. The wave characteristics are the significant wave height *H*, and the offshore peak wave steepness *s*. The factor *M* reflects the risk analyst's vision on the uncertainty related to the model itself, i.e. its ability to reproduce reality. 
 
-If Z<0, the dike is stable (the strength is greater than the stress); unstable otherwise. 
+If Z>0, the dike is stable (the strength is greater than the stress); unstable otherwise. 
 The study is focused on the estimate of the probability for *Z* to become negative, which is considered a measure of the dike reliability.
 
 ![A schematic overview of the dyke.](images/dyke.png)

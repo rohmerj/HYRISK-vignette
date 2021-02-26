@@ -1,5 +1,5 @@
 # HYRISK-vignette
-This is the vignette of the R package [HYRISK](www). Click [here](https://rawcdn.githack.com/rohmerj/HYRISK-vignette/aaa78cc794e8cc0ff694f7d89356b7b532219d3a/hyrisk_demo.html) for html version, click [here](https://github.com/rohmerj/HYRISK-vignette/blob/main/hyrisk_demo.Rmd) for R Markdown, and click [here](https://github.com/rohmerj/HYRISK-vignette/blob/main/hyrisk_introduction.pdf) for PDF version.
+This is the vignette of the R package [HYRISK](www) that is available on the CRAN. Click [here](https://rawcdn.githack.com/rohmerj/HYRISK-vignette/aaa78cc794e8cc0ff694f7d89356b7b532219d3a/hyrisk_demo.html) for html version, click [here](https://github.com/rohmerj/HYRISK-vignette/blob/main/hyrisk_demo.Rmd) for R Markdown, and click [here](https://github.com/rohmerj/HYRISK-vignette/blob/main/hyrisk_introduction.pdf) for PDF version.
 
 ```{r}
 library(HYRISK)

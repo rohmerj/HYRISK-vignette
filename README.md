@@ -36,7 +36,7 @@ The procedure in *HYRISK* first uses the *CREATE_INPUT* function to define the i
 
 Parameter          | Symbol | Uncertainty type | Representation
 -------------------|--------|------------------|-----------------
-Significant wave height| $H$ | Randomness | p-box of type Weibull with imprecise shape and scale
+Significant wave height| *H* | Randomness | p-box of type Weibull with imprecise shape and scale
 Weibull scale         | *lambda* | Imprecision | Interval [1.2, 1.5]
 Weibull shape          | *k* | Imprecision | Interval [10, 12 ]
 Peak wave steepness          | *s* | Randomness | Normal (Gaussian) probability distribution with mean=0.040 and standard deviation=0.0055 
